@@ -12,6 +12,15 @@ export class InMemoryUsersRepository implements UsersRepository {
     return user
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async findById(userId: string) {
+    const user = this.items.find((item) => item.id === userId)
+    if (!user) {
+      return null
+    }
+    return user
+  }
+
   async create(data: Prisma.UserCreateInput) {
     const user: User = {
       id: 'user-1',
