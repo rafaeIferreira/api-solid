@@ -62,7 +62,6 @@ describe('Search Gyms Use Case', () => {
       query: 'Javascript',
       page: 2,
     })
-    console.log(gyms)
 
     // to be equal to any string
     expect(gyms).toHaveLength(2)
