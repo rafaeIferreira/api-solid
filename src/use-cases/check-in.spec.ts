@@ -54,14 +54,14 @@ describe('Check-in Use Case', () => {
     })
 
     // to be equal to any string
-    await expect(async () => {
-      await sut.execute({
+    await expect(() =>
+      sut.execute({
         userId: 'user-01',
         gymId: 'gym-01',
         userLatitude: -25.4377984,
         userLongitude: -49.2732416,
-      })
-    }).rejects.toBeInstanceOf(MaxNumberCheckInsError)
+      }),
+    ).rejects.toBeInstanceOf(MaxNumberCheckInsError)
   })
 
   it('should be able to check in twice but in different days', async () => {
@@ -93,13 +93,13 @@ describe('Check-in Use Case', () => {
       longitude: new Decimal(-49.0648447),
     })
 
-    expect(async () => {
-      await sut.execute({
+    expect(() =>
+      sut.execute({
         userId: 'user-01',
         gymId: 'gym-02',
         userLatitude: -25.4377984,
         userLongitude: -49.2732416,
-      })
-    }).rejects.toBeInstanceOf(MaxDistanceError)
+      }),
+    ).rejects.toBeInstanceOf(MaxDistanceError)
   })
 })
