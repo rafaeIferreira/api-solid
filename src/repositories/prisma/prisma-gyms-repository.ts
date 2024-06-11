@@ -16,7 +16,6 @@ export class PrismaGymsRepository implements GymsRepository {
     const gym = await prisma.gym.create({
       data,
     })
-
     return gym
   }
 
